@@ -1,5 +1,5 @@
 -- vim.opt.guicursor = ""
-
+vim.opt.mouse = ""
 -- vim.opt.clipboard="unnamedplus"
 
 vim.opt.nu = true
@@ -32,3 +32,15 @@ vim.opt.updatetime = 50
 
 -- vim.opt.colorcolumn = "80"
 
+-- Enables system clipboard over ssh
+vim.g.clipboard = {
+  name = 'OSC 52',
+  copy = {
+    ['+'] = require('vim.ui.clipboard.osc52').copy('+'),
+    ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
+  },
+  paste = {
+    ['+'] = require('vim.ui.clipboard.osc52').paste('+'),
+    ['*'] = require('vim.ui.clipboard.osc52').paste('*'),
+  },
+}
