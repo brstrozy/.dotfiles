@@ -9,7 +9,7 @@ return {
         "williamboman/mason-lspconfig.nvim",
         config = function()
             require("mason-lspconfig").setup({
-                ensure_installed = { "lua_ls", "tsserver", "jdtls", "powershell_es" }
+                ensure_installed = { "lua_ls", "tsserver", "jdtls", "powershell_es", "bashls" }
             })
         end
     },
@@ -38,6 +38,10 @@ return {
                 capabilities = capabilities
             })
 
+            lspconfig.bashls.setup({
+                capabilities = capabilities
+            })
+
             local opts = {}
 
             vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
@@ -51,5 +55,8 @@ return {
             vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
             vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
         end
+    },
+    {
+        "mfussenegger/nvim-jdtls",
     }
 }
