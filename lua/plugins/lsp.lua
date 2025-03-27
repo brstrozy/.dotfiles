@@ -22,7 +22,14 @@ return {
 
             -- LSP SERVER SETUPS
             lspconfig.lua_ls.setup({
-                capabilities = capabilities
+                capabilities = capabilities,
+                settings = {
+                    Lua = {
+                        diagnostics = {
+                            globals = {'vim'}
+                        }
+                    }
+                }
             })
 
             lspconfig.tsserver.setup({
