@@ -1,0 +1,14 @@
+# BUILD nvim from source
+Pre-Reqs
+- gcc or clang
+- cmake
+
+ubuntu pre-reqs
+- ninja-build
+- gettext
+- curl
+- build-essential
+
+https://github.com/neovim/neovim/blob/master/INSTALL.md#install-from-source
+
+
