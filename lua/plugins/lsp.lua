@@ -9,7 +9,7 @@ return {
         "williamboman/mason-lspconfig.nvim",
         config = function()
             require("mason-lspconfig").setup({
-                ensure_installed = { "lua_ls", "tsserver", "jdtls", "powershell_es", "bashls" }
+                ensure_installed = { "lua_ls", "bashls", "pyright", "ruff" }
             })
         end
     },
@@ -32,20 +32,15 @@ return {
                 }
             })
 
-            lspconfig.tsserver.setup({
-                capabilities = capabilities
-            })
-
-            -- Java
-            lspconfig.jdtls.setup({
-                capabilities = capabilities
-            })
-
-            lspconfig.powershell_es.setup({
-                capabilities = capabilities
-            })
-
             lspconfig.bashls.setup({
+                capabilities = capabilities
+            })
+
+            lspconfig.pyright.setup({
+                capabilities = capabilities
+            })
+
+            lspconfig.ruff.setup({
                 capabilities = capabilities
             })
 
@@ -62,8 +57,5 @@ return {
             vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
             vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
         end
-    },
-    {
-        "mfussenegger/nvim-jdtls",
     }
 }
