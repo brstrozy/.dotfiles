@@ -17,7 +17,7 @@ vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
 -- delete text without saving to clipboard
-vim.keymap.set({"n","v"}, "<leader>d", [["_d]])
+vim.keymap.set({"n","v"}, "<leader>D", [["_d]])
 
 -- yank to system clipboard
 vim.keymap.set({"n","v"}, "<leader>y", [["+y]])
@@ -45,3 +45,7 @@ vim.keymap.set("n", "<C-l>", "<C-w>l")
 vim.keymap.set("n", "<space><space>x", "<cmd>source %<CR>")
 vim.keymap.set("n", "<space>x", ":.lua<CR>")
 vim.keymap.set("v", "<space>x", ":lua<CR>")
+
+-- custom done toggle for notes
+vim.keymap.set({"v"}, "<leader>d", ':<C-u>ToggleDone<CR>')
+
