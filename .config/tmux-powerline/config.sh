@@ -42,9 +42,6 @@
 	#export TMUX_POWERLINE_MUTE_RIGHT_KEYBINDING="C-]"
 # }
 
-# spacer.sh {
-#
-# }
 
 # hostname.sh {
 	# Use short or long format for the hostname. Can be {"short, long"}.
