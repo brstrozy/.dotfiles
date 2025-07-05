@@ -9,8 +9,11 @@
 
 #segments
 text_color="235"
-segment_fg_color="75"
-segment_bg_color="0"
+fg_color="75"
+bg_color="0"
+
+#window segments
+currwin_fg_color="color248"
 
 # Arrow separators
 #	TMUX_POWERLINE_SEPARATOR_LEFT_BOLD=""
@@ -32,7 +35,7 @@ segment_bg_color="0"
 
 # See Color formatting section below for details on what colors can be used here.
 TMUX_POWERLINE_DEFAULT_BACKGROUND_COLOR=${TMUX_POWERLINE_DEFAULT_BACKGROUND_COLOR:-'0'}
-TMUX_POWERLINE_DEFAULT_FOREGROUND_COLOR=${TMUX_POWERLINE_DEFAULT_FOREGROUND_COLOR:-'255'}
+TMUX_POWERLINE_DEFAULT_FOREGROUND_COLOR=${TMUX_POWERLINE_DEFAULT_FOREGROUND_COLOR:-'75'}
 # shellcheck disable=SC2034
 TMUX_POWERLINE_SEG_AIR_COLOR=$(air_color)
 
@@ -43,15 +46,11 @@ TMUX_POWERLINE_DEFAULT_RIGHTSIDE_SEPARATOR=${TMUX_POWERLINE_DEFAULT_RIGHTSIDE_SE
 # The `format regular` and `format inverse` functions are provided as conveniences
 
 # shellcheck disable=SC2128
-tempcolor="color248"
 if [ -z "$TMUX_POWERLINE_WINDOW_STATUS_CURRENT" ]; then
 	TMUX_POWERLINE_WINDOW_STATUS_CURRENT=(
-        "#[fg=$tempcolor,bg=0]"
+        "#[fg=$currwin_fg_color,bg=$bg_color]"
         "$TMUX_POWERLINE_DEFAULT_LEFTSIDE_SEPARATOR"
-		"#[fg=0,bg=$tempcolor]"
-		#"$TMUX_POWERLINE_DEFAULT_LEFTSIDE_SEPARATOR"
-		#" #I#F "
-		#"$TMUX_POWERLINE_SEPARATOR_RIGHT_THIN"
+		"#[fg=$bg_color,bg=$currwin_fg_color]"
 		" #I:#W "
         "$TMUX_POWERLINE_DEFAULT_LEFTSIDE_SEPARATOR"
 	)
@@ -67,17 +66,9 @@ fi
 # shellcheck disable=SC2128
 if [ -z "$TMUX_POWERLINE_WINDOW_STATUS_FORMAT" ]; then
 	TMUX_POWERLINE_WINDOW_STATUS_FORMAT=(
-		#"#[$(format regular)]"
-        #"  #I#{?window_flags,#F, } "
-		#"$TMUX_POWERLINE_SEPARATOR_RIGHT_THIN"
-		#" #W "
         "#[$(format regular)]"
         "$TMUX_POWERLINE_DEFAULT_LEFTSIDE_SEPARATOR"
 		"#[$(format inverse)]"
-		#"$TMUX_POWERLINE_DEFAULT_LEFTSIDE_SEPARATOR"
-		#" #I#F "
-		#"$TMUX_POWERLINE_SEPARATOR_RIGHT_THIN"
-        #"  #I#{?window_flags,#F, } "
 		" #I:#W "
         "$TMUX_POWERLINE_DEFAULT_LEFTSIDE_SEPARATOR"
 	)
@@ -129,15 +120,15 @@ fi
 # shellcheck disable=SC1143,SC2128
 if [ -z "$TMUX_POWERLINE_LEFT_STATUS_SEGMENTS" ]; then
 	TMUX_POWERLINE_LEFT_STATUS_SEGMENTS=(
-        "tmux_session_info $segment_fg_color $text_color ${TMUX_POWERLINE_SEPARATOR_RIGHT_BOLD} $segment_fg_color $segment_bg_color"
-        "spacer $segment_bg_color $segment_fg_color ${TMUX_POWERLINE_SEPARATOR_RIGHT_BOLD} no_sep_bg_color no_sep_fg_color both_disable separator_disable"
-		"hostname $segment_fg_color $text_color ${TMUX_POWERLINE_SEPARATOR_RIGHT_BOLD} $segment_fg_color $segment_bg_color"
+        "tmux_session_info $fg_color $text_color ${TMUX_POWERLINE_SEPARATOR_RIGHT_BOLD} $fg_color $bg_color"
+        "spacer $bg_color $fg_color ${TMUX_POWERLINE_SEPARATOR_RIGHT_BOLD} no_sep_bg_color no_sep_fg_color both_disable separator_disable"
+		"hostname $fg_color $text_color ${TMUX_POWERLINE_SEPARATOR_RIGHT_BOLD} $fg_color $bg_color"
 	)
 fi
 
 # shellcheck disable=SC1143,SC2128
 if [ -z "$TMUX_POWERLINE_RIGHT_STATUS_SEGMENTS" ]; then
 	TMUX_POWERLINE_RIGHT_STATUS_SEGMENTS=(
-        "lan_ip $segment_fg_color $text_color ${TMUX_POWERLINE_SEPARATOR_RIGHT_BOLD}"
+        "lan_ip $fg_color $text_color ${TMUX_POWERLINE_SEPARATOR_RIGHT_BOLD}"
 	)
 fi
