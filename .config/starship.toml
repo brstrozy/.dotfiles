@@ -1,0 +1,24 @@
+# ~/.config/starship.toml
+
+format = '''$username$hostname$character$git_branch$character$directory$line_break$character '''
+
+[username]
+style_user = 'blue bold'
+style_root = 'red bold'
+format = '[$user]($style)'
+disabled = false
+show_always = true
+aliases = { "corpuser034g" = "matchai" }
+
+[hostname]
+ssh_only = false
+format = '@[$hostname](bold yellow)'
+trim_at = '.companyname.com'
+disabled = false
+
+[git_branch]
+truncation_length = 4
+truncation_symbol = ''
+style = 'bold green'
+format = '[$branch]($style)'
+#ignore_branches = ['master', 'main']

@@ -5,8 +5,6 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-#PS1='[\u@\h \W]\$ '
-
 #######################
 # CUSTOM CONFIG START #
 #######################
@@ -36,7 +34,9 @@ alias ll='ls -la --color=auto'
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 
-PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+source /usr/share/git/completion/git-prompt.sh
+PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\[\033[01;31m\]$(__git_ps1 " (%s)")\[\033[00m\]\n❯ '
+PROMPT_COMMAND="echo"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 eval "$(fzf --bash)"
@@ -64,7 +64,6 @@ if [[ -z "$TMUX" ]]; then
     neofetch
 fi
 
-eval "$(starship init bash)"
 #######################
 # CUSTOM CONFIG END   #
 #######################
